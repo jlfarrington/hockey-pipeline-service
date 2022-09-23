@@ -1,11 +1,11 @@
 const axios = require('axios').default;
 const baseUrl = 'https://statsapi.web.nhl.com/api/v1';
 
-type ApiResponse = {
+interface ApiResponse {
   error: boolean;
   data?: any;
   msg?: string;
-};
+}
 
 export const getTeamStats = async (teamId: number | string, season: string): Promise<ApiResponse> => {
   const response: ApiResponse = { error: false };
