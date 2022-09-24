@@ -1,9 +1,102 @@
+import { getMockReq, getMockRes } from '@jest-mock/express';
+import { getTeamDetails } from '../src/controllers/teamPipelineController';
+import * as fetchActions from '../src/actions/nhlApiActions';
+import * as utils from '../src/utils';
+import { testScheduleResponse, testStatsResponse } from './testData';
+
+const getTeamStatsMock = jest.spyOn(fetchActions, 'getTeamStats');
+const getTeamScheduleMock = jest.spyOn(fetchActions, 'getTeamSchedule');
+const writeCSVFromDataMock = jest.spyOn(utils, 'writeCSVFromData');
+
 describe('teamPipelineController: getTeamDetails', () => {
-  it('should return a 200 from API when provided a team ID and season year and csv write is successful', () => {});
+  const inputReq = {
+    query: {
+      teamId: '4',
+      season: '20182019',
+    },
+  };
 
-  it('should call the csvWriter function', () => {});
+  beforeAll(() => {
+    getTeamStatsMock.mockImplementation(async (): Promise<any> => testStatsResponse);
+    getTeamScheduleMock.mockImplementation(async (): Promise<any> => testScheduleResponse);
+    writeCSVFromDataMock.mockImplementationOnce(async () => true);
+  });
 
-  it('should handle errors', () => {});
+  afterAll(() => jest.resetAllMocks());
 
-  it('should pass a 422 if team ID and season year are not provided', () => {});
+  it('should return a 200 from API when provided a team ID and season year and csv write is successful', async () => {
+    const mockRequest = getMockReq(inputReq);
+    const { res } = getMockRes();
+    await getTeamDetails(mockRequest, res);
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.download).toHaveBeenCalledWith('./output/teamPipeline.csv');
+  });
+
+  it('should call the csvWriter function', async () => {
+    const mockRequest = getMockReq(inputReq);
+    const { res } = getMockRes();
+    await getTeamDetails(mockRequest, res);
+    expect(writeCSVFromDataMock).toHaveBeenCalled();
+  });
+
+  it('should catch errors', async () => {
+    getTeamStatsMock.mockImplementationOnce(() => {
+      throw new Error('test error!');
+    });
+
+    const mockRequest = getMockReq(inputReq);
+    const { res } = getMockRes();
+    await getTeamDetails(mockRequest, res);
+    expect(res.status).toHaveBeenCalledWith(500);
+  });
+
+  it('should handle fetch error for stats call', async () => {
+    getTeamStatsMock.mockImplementationOnce(async () => {
+      return {
+        error: true,
+      };
+    });
+
+    const mockRequest = getMockReq(inputReq);
+    const { res } = getMockRes();
+    await getTeamDetails(mockRequest, res);
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ msg: 'Error calling NHL API', error: true });
+  });
+
+  it('should handle fetch error for schedule call', async () => {
+    getTeamScheduleMock.mockImplementationOnce(async () => {
+      return {
+        error: true,
+      };
+    });
+
+    const mockRequest = getMockReq(inputReq);
+    const { res } = getMockRes();
+    await getTeamDetails(mockRequest, res);
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ msg: 'Error calling NHL API', error: true });
+  });
+
+  it('should handle csvWriter failure', async () => {
+    writeCSVFromDataMock.mockImplementationOnce(async () => false);
+
+    const mockRequest = getMockReq(inputReq);
+    const { res } = getMockRes();
+    await getTeamDetails(mockRequest, res);
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ msg: 'Error writing team data to CSV', error: true });
+  });
+
+  it('should pass a 422 if team ID and season year are not provided', async () => {
+    const inputReq = {
+      query: {
+        season: '20182019',
+      },
+    };
+    const mockRequest = getMockReq(inputReq);
+    const { res } = getMockRes();
+    await getTeamDetails(mockRequest, res);
+    expect(res.status).toHaveBeenCalledWith(422);
+  });
 });
