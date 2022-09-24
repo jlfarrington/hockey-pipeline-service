@@ -45,3 +45,39 @@ export const getTeamSchedule = async (teamId: number | string, season: string): 
     return response;
   }
 };
+
+export const getPlayerInfo = async (playerId: number | string): Promise<ApiResponse> => {
+  const response: ApiResponse = { error: false };
+  const infoUrl = `${baseUrl}/people/${playerId}`;
+  try {
+    const statsResponse = await axios.get(infoUrl);
+    if (!statsResponse.data || statsResponse.status !== 200) {
+      response.error = true;
+      return response;
+    }
+    response.data = statsResponse.data;
+    return response;
+  } catch (err) {
+    response.error = true;
+    console.log(JSON.stringify(err));
+    return response;
+  }
+};
+
+export const getPlayerStats = async (playerId: number | string, season: string): Promise<ApiResponse> => {
+  const response: ApiResponse = { error: false };
+  const statsUrl = `${baseUrl}/people/${playerId}/stats?stats=statsSingleSeason&season=${season}`;
+  try {
+    const statsResponse = await axios.get(statsUrl);
+    if (!statsResponse.data || statsResponse.status !== 200) {
+      response.error = true;
+      return response;
+    }
+    response.data = statsResponse.data;
+    return response;
+  } catch (err) {
+    response.error = true;
+    console.log(JSON.stringify(err));
+    return response;
+  }
+};

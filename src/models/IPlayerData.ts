@@ -1,9 +1,9 @@
 export interface IPlayerData {
   playerId: number;
   playerName: string;
-  currentTeam: number;
+  currentTeam: string;
   playerAge: number;
-  playerNumber: number;
+  playerNumber: string;
   playerPosition: string;
   rookie: boolean;
   assists: number;

@@ -19,10 +19,11 @@
     "prepare": "npm.cmd run build",
     "pretest": "npm.cmd run build",
     "posttest": "npm.cmd run lint",
-    "test": "jest",
+    "test": "jest --coverage",
     "start": "node ./build/src/main.js"
   },
   "dependencies": {
+    "@jest-mock/express": "^2.0.1",
     "axios": "^0.27.2",
     "cors": "^2.8.5",
     "csv-writer": "^1.6.0",
