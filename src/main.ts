@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv';
 import cors from 'cors';
 import { Request, Response } from 'express';
 import { getTeamDetails } from './controllers/teamPipelineController';
+import { getPlayerDetails } from './controllers/playerPipelineController';
 
 dotenv.config();
 const app = express();
@@ -24,6 +25,7 @@ app.get('/healthcheck', (req: Request, res: Response) => {
 });
 
 app.get('/teamPipeline', getTeamDetails);
+app.get('/playerPipeline', getPlayerDetails);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
