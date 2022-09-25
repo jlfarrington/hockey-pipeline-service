@@ -1,6 +1,6 @@
 ## Hockey Pipeline Service
 This simple API exposes two endpoints to allow users to receive specific data about NHL teams and players. 
-Both endpoints output a CSV both in the response and also to the project's /output directory.
+Both endpoints output a CSV both in the response and also to the project's `/output` directory.
 
 ### Endpoint documentation:
 `/teamPipeline?teamId=30&season=20182019`
