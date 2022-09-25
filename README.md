@@ -30,7 +30,7 @@ You should see a success log indicating that the service is listening on the cor
     - After selecting a team, make a request to `https://statsapi.web.nhl.com/api/v1/teams/ID/roster` and cache that team's players and their respective IDs.
     - A user can then decide whether or not they'd like to see stats at the team or the player level.
     - If they'd like to see stats at a player level, the user can then select a player by name, without needing an ID.
-- After writing the .csv files, dump them onto either a pub-sub queue or into an S3 bucket or the like.
+- After writing the .csv files, dump them onto either a pub-sub queue or into an S3 bucket or something similar.
 - Service Infrastructure
     - This lightweight service could be deployed via AWS serverless lambdas, just would need to refactor controller functions as main handler functions.
     - Implement HATEOAS for a more discoverable, RESTful experience if new endpoints are added
