@@ -32,11 +32,24 @@ describe('teamPipelineController: getTeamDetails', () => {
     expect(res.download).toHaveBeenCalledWith('./output/teamPipeline.csv');
   });
 
-  it('should call the csvWriter function', async () => {
+  it('should call the csvWriter function with the expected data', async () => {
+    const expectedTeamData = {
+      teamId: 30,
+      teamName: 'Wild',
+      teamVenueName: 'Xcel Energy Center',
+      gamesPlayed: 82,
+      wins: 53,
+      losses: 22,
+      points: 113,
+      goalsPerGame: 3.72,
+      firstGameSeasonDate: '2018-09-18T00:00:00Z',
+      firstOpponentName: 'Winnipeg Jets',
+    };
+
     const mockRequest = getMockReq(inputReq);
     const { res } = getMockRes();
     await getTeamDetails(mockRequest, res);
-    expect(writeCSVFromDataMock).toHaveBeenCalled();
+    expect(writeCSVFromDataMock).toHaveBeenCalledWith('teamPipeline', expectedTeamData);
   });
 
   it('should catch errors', async () => {

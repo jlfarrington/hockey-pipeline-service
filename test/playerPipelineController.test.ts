@@ -32,11 +32,26 @@ describe('playerPipelineController: getTeamDetails', () => {
     expect(res.download).toHaveBeenCalledWith('./output/playerPipeline.csv');
   });
 
-  it('should call the csvWriter function', async () => {
+  it('should call the csvWriter function with the expected player data', async () => {
+    const expectedPlayerData = {
+      playerId: 8476792,
+      playerName: 'Torey Krug',
+      currentTeam: 'Boston Bruins',
+      playerAge: 28,
+      playerNumber: '47',
+      playerPosition: 'Defenseman',
+      rookie: false,
+      assists: 43,
+      goals: 38,
+      games: 66,
+      hits: 57,
+      points: 81,
+    };
+
     const mockRequest = getMockReq(inputReq);
     const { res } = getMockRes();
     await getPlayerDetails(mockRequest, res);
-    expect(writeCSVFromDataMock).toHaveBeenCalled();
+    expect(writeCSVFromDataMock).toHaveBeenCalledWith('playerPipeline', expectedPlayerData);
   });
 
   it('should catch errors', async () => {
