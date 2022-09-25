@@ -1,0 +1,366 @@
+export const testStatsResponse = {
+  data: {
+    copyright: 'test copyright',
+    teams: [
+      {
+        id: 30,
+        name: 'Minnesota Wild',
+        link: '/api/v1/teams/30',
+        venue: {
+          id: 5098,
+          name: 'Xcel Energy Center',
+          link: '/api/v1/venues/5098',
+          city: 'St. Paul',
+          timeZone: {
+            id: 'America/Chicago',
+            offset: -5,
+            tz: 'CDT',
+          },
+        },
+        abbreviation: 'MIN',
+        teamName: 'Wild',
+        locationName: 'Minnesota',
+        firstYearOfPlay: '1997',
+        division: {
+          id: 16,
+          name: 'Central',
+          nameShort: 'CEN',
+          link: '/api/v1/divisions/16',
+          abbreviation: 'C',
+        },
+        conference: {
+          id: 5,
+          name: 'Western',
+          link: '/api/v1/conferences/5',
+        },
+        franchise: {
+          franchiseId: 37,
+          teamName: 'Wild',
+          link: '/api/v1/franchises/37',
+        },
+        teamStats: [
+          {
+            type: {
+              displayName: 'statsSingleSeason',
+              gameType: {
+                id: 'R',
+                description: 'Regular season',
+                postseason: false,
+              },
+            },
+            splits: [
+              {
+                stat: {
+                  gamesPlayed: 82,
+                  wins: 53,
+                  losses: 22,
+                  ot: 7,
+                  pts: 113,
+                  ptPctg: '68.9',
+                  goalsPerGame: 3.72,
+                  goalsAgainstPerGame: 3.037,
+                  evGGARatio: 1.3709,
+                  powerPlayPercentage: '20.5',
+                  powerPlayGoals: 53.0,
+                  powerPlayGoalsAgainst: 63.0,
+                  powerPlayOpportunities: 258.0,
+                  penaltyKillPercentage: '76.1',
+                  shotsPerGame: 32.5122,
+                  shotsAllowed: 31.4268,
+                  winScoreFirst: 0.8,
+                  winOppScoreFirst: 0.459,
+                  winLeadFirstPer: 0.912,
+                  winLeadSecondPer: 0.921,
+                  winOutshootOpp: 0.63,
+                  winOutshotByOpp: 0.657,
+                  faceOffsTaken: 4815.0,
+                  faceOffsWon: 2294.0,
+                  faceOffsLost: 2521.0,
+                  faceOffWinPercentage: '47.6',
+                  shootingPctg: 11.4,
+                  savePctg: 0.903,
+                },
+                team: {
+                  id: 30,
+                  name: 'Minnesota Wild',
+                  link: '/api/v1/teams/30',
+                },
+              },
+              {
+                stat: {
+                  wins: '5th',
+                  losses: '6th',
+                  ot: '22nd',
+                  pts: '5th',
+                  ptPctg: '5th',
+                  goalsPerGame: '5th',
+                  goalsAgainstPerGame: '16th',
+                  evGGARatio: '3rd',
+                  powerPlayPercentage: '18th',
+                  powerPlayGoals: '12th',
+                  powerPlayGoalsAgainst: '30th',
+                  powerPlayOpportunities: '4th',
+                  penaltyKillOpportunities: '29th',
+                  penaltyKillPercentage: '25th',
+                  shotsPerGame: '11th',
+                  shotsAllowed: '15th',
+                  winScoreFirst: '5th',
+                  winOppScoreFirst: '7th',
+                  winLeadFirstPer: '2nd',
+                  winLeadSecondPer: '5th',
+                  winOutshootOpp: '9th',
+                  winOutshotByOpp: '9th',
+                  faceOffsTaken: '6th',
+                  faceOffsWon: '17th',
+                  faceOffsLost: '30th',
+                  faceOffWinPercentage: '27th',
+                  savePctRank: '17th',
+                  shootingPctRank: '2nd',
+                },
+                team: {
+                  id: 30,
+                  name: 'Minnesota Wild',
+                  link: '/api/v1/teams/30',
+                },
+              },
+            ],
+          },
+        ],
+        shortName: 'Minnesota',
+        officialSiteUrl: 'http://www.wild.com/',
+        franchiseId: 37,
+        active: true,
+      },
+    ],
+  },
+};
+
+export const testScheduleResponse = {
+  data: {
+    copyright:
+      'NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2022. All Rights Reserved.',
+    totalItems: 89,
+    totalEvents: 0,
+    totalGames: 89,
+    totalMatches: 0,
+    metaData: {
+      timeStamp: '20220924_200612',
+    },
+    wait: 10,
+    dates: [
+      {
+        date: '2018-09-17',
+        totalItems: 1,
+        totalEvents: 0,
+        totalGames: 1,
+        totalMatches: 0,
+        games: [
+          {
+            gamePk: 2018010011,
+            link: '/api/v1/game/2018010011/feed/live',
+            gameType: 'PR',
+            season: '20182019',
+            gameDate: '2018-09-18T00:00:00Z',
+            status: {
+              abstractGameState: 'Final',
+              codedGameState: '6',
+              detailedState: 'Final',
+              statusCode: '6',
+              startTimeTBD: false,
+            },
+            teams: {
+              away: {
+                leagueRecord: {
+                  wins: 0,
+                  losses: 1,
+                  ot: 0,
+                  type: 'league',
+                },
+                score: 1,
+                team: {
+                  id: 30,
+                  name: 'Minnesota Wild',
+                  link: '/api/v1/teams/30',
+                },
+              },
+              home: {
+                leagueRecord: {
+                  wins: 1,
+                  losses: 0,
+                  ot: 0,
+                  type: 'league',
+                },
+                score: 2,
+                team: {
+                  id: 52,
+                  name: 'Winnipeg Jets',
+                  link: '/api/v1/teams/52',
+                },
+              },
+            },
+            venue: {
+              name: 'Bell MTS Place',
+              link: '/api/v1/venues/null',
+            },
+            content: {
+              link: '/api/v1/game/2018010011/content',
+            },
+          },
+        ],
+        events: [],
+        matches: [],
+      },
+      {
+        date: '2018-09-19',
+        totalItems: 1,
+        totalEvents: 0,
+        totalGames: 1,
+        totalMatches: 0,
+        games: [
+          {
+            gamePk: 2018010031,
+            link: '/api/v1/game/2018010031/feed/live',
+            gameType: 'PR',
+            season: '20182019',
+            gameDate: '2018-09-20T00:00:00Z',
+            status: {
+              abstractGameState: 'Final',
+              codedGameState: '6',
+              detailedState: 'Final',
+              statusCode: '6',
+              startTimeTBD: false,
+            },
+            teams: {
+              away: {
+                leagueRecord: {
+                  wins: 1,
+                  losses: 1,
+                  ot: 0,
+                  type: 'league',
+                },
+                score: 3,
+                team: {
+                  id: 19,
+                  name: 'St. Louis Blues',
+                  link: '/api/v1/teams/19',
+                },
+              },
+              home: {
+                leagueRecord: {
+                  wins: 0,
+                  losses: 2,
+                  ot: 0,
+                  type: 'league',
+                },
+                score: 2,
+                team: {
+                  id: 30,
+                  name: 'Minnesota Wild',
+                  link: '/api/v1/teams/30',
+                },
+              },
+            },
+            venue: {
+              id: 5268,
+              name: 'Wells Fargo Arena',
+              link: '/api/v1/venues/5268',
+            },
+            content: {
+              link: '/api/v1/game/2018010031/content',
+            },
+          },
+        ],
+        events: [],
+        matches: [],
+      },
+    ],
+  },
+};
+
+export const testPlayerInfoResponse = {
+  data: {
+    copyright: 'test copyright',
+    people: [
+      {
+        id: 8476792,
+        fullName: 'Torey Krug',
+        link: '/api/v1/people/8476792',
+        firstName: 'Torey',
+        lastName: 'Krug',
+        primaryNumber: '47',
+        birthDate: '1991-04-12',
+        currentAge: 28,
+        birthCity: 'Livonia',
+        birthStateProvince: 'MI',
+        birthCountry: 'USA',
+        nationality: 'USA',
+        height: '5\' 9"',
+        weight: 186,
+        active: true,
+        alternateCaptain: false,
+        captain: false,
+        rookie: false,
+        shootsCatches: 'L',
+        rosterStatus: 'Y',
+        currentTeam: {
+          id: 6,
+          name: 'Boston Bruins',
+          link: '/api/v1/teams/6',
+        },
+        primaryPosition: {
+          code: 'D',
+          name: 'Defenseman',
+          type: 'Defenseman',
+          abbreviation: 'D',
+        },
+      },
+    ],
+  },
+};
+
+export const testPlayerStatsResponse = {
+  data: {
+    copyright: 'test copyright',
+    stats: [
+      {
+        type: {
+          displayName: 'statsSingleSeason',
+        },
+        splits: [
+          {
+            season: '20182019',
+            stat: {
+              timeOnIce: '1237:45',
+              assists: 43,
+              goals: 38,
+              pim: 32,
+              shots: 235,
+              games: 66,
+              hits: 57,
+              powerPlayGoals: 17,
+              powerPlayPoints: 33,
+              powerPlayTimeOnIce: '222:18',
+              evenTimeOnIce: '1012:48',
+              penaltyMinutes: '32',
+              faceOffPct: 33.33,
+              shotPct: 16.2,
+              gameWinningGoals: 4,
+              overTimeGoals: 0,
+              shortHandedGoals: 0,
+              shortHandedPoints: 0,
+              shortHandedTimeOnIce: '02:39',
+              blocked: 25,
+              plusMinus: 6,
+              points: 81,
+              shifts: 1395,
+              timeOnIcePerGame: '18:45',
+              evenTimeOnIcePerGame: '15:20',
+              shortHandedTimeOnIcePerGame: '00:02',
+              powerPlayTimeOnIcePerGame: '03:22',
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
