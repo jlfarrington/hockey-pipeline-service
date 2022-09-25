@@ -7,7 +7,7 @@ Both endpoints output a CSV both in the response and also to the project's /outp
 
 both **TeamId** and **Season** are required query parameters.
 
-`playerPipeline?playerId=8476923&season=20192020`
+`/playerPipeline?playerId=8476923&season=20192020`
 
 both **PlayerId** and **Season** are required query parameters.
 
