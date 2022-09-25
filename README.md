@@ -34,3 +34,4 @@ You should see a success log indicating that the service is listening on the cor
     - This lightweight service could be deployed via AWS serverless lambdas, just would need to refactor controller functions as main handler functions.
     - Implement HATEOAS for a more discoverable, RESTful experience if new endpoints are added
     - Build out accompanying CLI or UI
+    - After writing the .csv files, dump them onto either a pub-sub queue or into an S3 bucket or the like.
